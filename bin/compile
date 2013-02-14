@@ -18,4 +18,4 @@ mv node* node
 chmod +x node/bin/*
 node/bin/npm install coffee-script
 cd ..
-vendor/node/bin/node vendor/node_modules/coffee-script/bin/coffee -w -o . *.coffee
+vendor/node/bin/node vendor/node_modules/coffee-script/bin/coffee -o . *.coffee
