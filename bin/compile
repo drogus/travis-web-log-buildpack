@@ -4,6 +4,9 @@ indent() {
   sed -u 's/^/       /'
 }
 
+# Save result of the previous buildpack:
+cat $1/last_pack_release.out > $1/last_pack_release.out.backup
+
 echo "Compiling assets" | indent
 cd $1
 
