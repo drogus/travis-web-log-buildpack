@@ -11,13 +11,11 @@ echo "Compiling assets" | indent
 cd $1
 
 # install node for js runtime
-mkdir -p bin
-cd bin
-curl https://s3.amazonaws.com/heroku-buildpack-ruby/node-0.4.7.tgz -s -o - | tar xzf -
-chmod +x node
-cd ..
 mkdir -p vendor
 cd vendor
-npm install coffee-script
+curl http://nodejs.org/dist/v0.8.19/node-v0.8.19-linux-x64.tar.gz -s -o - | tar xzf -
+mv node* node
+chmod +x node/bin/*
+node/bin/npm install coffee-script
 cd ..
 vendor/node_modules/coffee-script/bin/coffee -w -o . *.coffee
