@@ -1,0 +1,20 @@
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "Compiling assets" | indent
+cd $1
+
+# install node for js runtime
+mkdir -p bin
+cd bin
+curl https://s3.amazonaws.com/heroku-buildpack-ruby/node-0.4.7.tgz -s -o - | tar xzf -
+chmod +x node
+cd ..
+mkdir -p vendor
+cd vendor
+npm install coffee-script
+cd ..
+vendor/node_modules/coffee-script/bin/coffee -w -o . *.coffee
